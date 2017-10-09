@@ -3,22 +3,31 @@
   width: 300px;
   float: left;
   color: $color-white;
+  background-color: $color-side;
+
 
   &__user {
     background-color: $color-side-top;
-    padding: 0 20px 40px 20px;
+    padding: 35px 20px 80px 20px;
 
     &__name {
       font-size: 16px;
       font-weight: bold;
-      padding-top: 35px;
+      float:left;
+    }
+
+    .cog{
+      float:right;
+      padding-left: 10px;
+    }
+    .pencil{
+      float:right;
     }
   }
 
   &__group {
     background-color: $color-side;
     padding: 0 20px 40px 20px;
-    height:100%;
 
     &__name {
       font-size: 15px;

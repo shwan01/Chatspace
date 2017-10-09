@@ -2,15 +2,17 @@
   height: 100vh;
   width: calc( 100vw - 300px );
   float: right;
+  background-color: $color-backwhite;
+
 
   &__title{
     background-color: $color-white;
-    padding: 35px 40px 0 40px;
+    padding:0 40px 0 40px;
 
     &__name{
       font-size: 20px;
       color: $color-black;
-      padding-bottom: 15px;
+      padding:35px 0 15px 0;
     }
 
     &__member{
@@ -21,8 +23,7 @@
   }
 
   &__chats{
-    height: 100%;
-    padding: 46px 20px 40px 40px;
+    padding: 46px 20px 130px 40px;
     background-color: $color-backwhite;
 
     &__top{
@@ -51,29 +52,33 @@
   &__send{
       padding: 0 40px;
       background-color: $color-backwhite;
-      height: 90px;
+      position: fixed;
+      bottom: 20px;
+      width: calc( 100vw - 300px );
 
     &__input{
         padding-left: 10px;
         height:50px;
-        width:80%;
         float:left;
+
         .field{
           height:50px;
-          width: 80%;
+          width: 500px;
         }
     }
 
     &__button{
       float:right;
+      padding-right: 80px;
       .input-button{
         padding-right: 10px;
       }
       .button{
         background-color: $color-blue;
+        color: $color-white;
         height: 50px;
         width: 100px;
-        margin: 20px 0 0 15px;
+        margin-left: 15px;
       }
     }
   }
