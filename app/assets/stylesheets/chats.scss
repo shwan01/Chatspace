@@ -1,3 +1,85 @@
-// Place all the styles related to the chats controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.content{
+  height: 100vh;
+  width: calc( 100vw - 300px );
+  float: right;
+  background-color: $color-white;
+
+
+  &__title{
+    background-color: $color-white;
+    padding:0 40px 0 40px;
+
+    &__name{
+      font-size: 20px;
+      color: $color-black;
+      padding:35px 0 15px 0;
+    }
+
+    &__member{
+      font-size: 12px;
+      color: $color-gray;
+      padding-bottom: 15px;
+    }
+  }
+
+  &__chats{
+    padding: 46px 20px 130px 40px;
+    background-color: $color-white;
+
+    &__top{
+      padding-bottom: 10px;
+      &__name{
+        color: $color-dark;
+        font-weight: bold;
+        font-size: 16px;
+        padding-right: 10px;
+        float: left;
+      }
+      &__time{
+        font-size: 12px;
+        color: $color-gray;
+        padding-top: 2px;
+      }
+    }
+
+    &__message{
+      color: $color-dark;
+      font-size: 14px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__send{
+      padding: 20px 0 20px 40px;
+      background-color: $color-backwhite;
+      position: fixed;
+      bottom: 0px;
+      width: calc( 100vw - 300px );
+
+    &__input{
+        padding-left: 10px;
+        height:50px;
+        float:left;
+
+        .field{
+          height:50px;
+          width: 500px;
+        }
+    }
+
+    &__button{
+      float:right;
+      padding-right: 80px;
+      .input-button{
+        padding-right: 10px;
+      }
+      .button{
+        background-color: $color-blue;
+        color: $color-white;
+        height: 50px;
+        width: 100px;
+        margin-left: 15px;
+      }
+    }
+  }
+}
