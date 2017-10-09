@@ -2,7 +2,7 @@
   height: 100vh;
   width: calc( 100vw - 300px );
   float: right;
-  background-color: $color-backwhite;
+  background-color: $color-white;
 
 
   &__title{
@@ -24,7 +24,7 @@
 
   &__chats{
     padding: 46px 20px 130px 40px;
-    background-color: $color-backwhite;
+    background-color: $color-white;
 
     &__top{
       padding-bottom: 10px;
@@ -50,10 +50,10 @@
   }
 
   &__send{
-      padding: 0 40px;
+      padding: 20px 0 20px 40px;
       background-color: $color-backwhite;
       position: fixed;
-      bottom: 20px;
+      bottom: 0px;
       width: calc( 100vw - 300px );
 
     &__input{
