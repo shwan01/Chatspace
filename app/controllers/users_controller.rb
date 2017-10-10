@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
   before_action :user_find
   def edit
-    user_find
   end
 
   def update
-    user_find
     if @user.update_attributes(user_params)
       redirect_to root_path
     end
