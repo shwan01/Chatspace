@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_find
+  before_action :user_find, only: [:edit, :update]
   def edit
   end
 
