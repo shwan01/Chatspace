@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to controller: 'chats', action: 'index'
+      redirect_to root_path
     end
   end
 
