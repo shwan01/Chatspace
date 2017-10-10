@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def upload
+  def update
   end
+
 end
