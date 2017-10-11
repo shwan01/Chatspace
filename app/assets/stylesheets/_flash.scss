@@ -1,0 +1,13 @@
+.alert {
+  text-align: center;
+}
+
+.alert--success {
+  background-color: $color-blue;
+  color: $color-white;
+}
+
+.alert--danger {
+  background-color: $color-orange;
+  color: $color-white;
+}
