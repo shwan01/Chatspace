@@ -4,6 +4,20 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create
+    @group = Group.new(group_params)
+    if @group.save
+      redirect_to :root, notice: 'グループが作成されました'
+    else
+      redirect_to :root, alert: 'グループ作成に失敗しました'
+    end
   end
+
+  private
+  def group_params
+    params.require(:group).permit(
+      :name,
+      user_ids: [],
+      )
+  end
+
 end
