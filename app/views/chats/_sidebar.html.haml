@@ -7,4 +7,5 @@
       %i.pencil.fa.fa-pencil-square-o
   .sidebar__group
     - @groups.each do |g|
-      %p.sidebar__group__name #{g.name}
+      = link_to group_chats_path(g), class: "sidebar__group" do
+        %p.sidebar__group__name #{g.name}

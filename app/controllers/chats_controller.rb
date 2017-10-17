@@ -16,4 +16,5 @@ class ChatsController < ApplicationController
       params.require(:chat).permit(
         :message
         )
+    end
 end
