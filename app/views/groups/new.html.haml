@@ -1,11 +1,20 @@
 .chat-group-form
   %h1 新規チャットグループ
   = form_for @group do |f|
+    / エラー表示
+    -if @group.errors.any?
+      .chat-group-form__errors
+        %h2
+          #{@group.errors.count}件のエラーが発生しました。
+          %ul
+            - @group.errors.full_messages.each do |e|
+              %li
+                #{e}
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :name, "グループ名", class: "chat-group-form__label"
       .chat-group-form__field--right
-        = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__input"
+        = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__input", required: true
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :member, "チャットメンバーを追加", class: "chat-group-form__label"
