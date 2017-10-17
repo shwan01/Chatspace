@@ -1,12 +1,10 @@
 .sidebar
   .sidebar__user
-    %p.sidebar__user__name sample-user
+    %p.sidebar__user__name #{current_user.name}
     = link_to edit_user_path(current_user) do
       %i.cog.fa.fa-cog
     = link_to new_group_path do
       %i.pencil.fa.fa-pencil-square-o
   .sidebar__group
-    %p.sidebar__group__name sample-group
-    %p.sidebar__group__message sample-message
-    %p.sidebar__group__name sample-group2
-    %p.sidebar__group__message sample-message2
+    - @groups.each do |g|
+      %p.sidebar__group__name #{g.name}
