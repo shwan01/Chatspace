@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to :root, notice: 'グループが作成されました'
     else
-      redirect_to :root, alert: 'グループ作成に失敗しました'
+      render :new, alert: 'グループ作成に失敗しました'
     end
   end
 
