@@ -32,19 +32,21 @@
     }
   }
 
-  &__group {
+  &__grouplist {
     background-color: $color-side;
-    padding: 0 20px 40px 20px;
-    color: $color-white;
 
-    &__name {
-      font-size: 15px;
-      padding-top: 20px;
-      padding-bottom: 5px;
-    }
+    &__group{
+      color: $color-white;
+      padding: 0 20px 0 20px;
 
-    &__message {
-      font-size: 11px;
+      &__name {
+        font-size: 15px;
+        padding-bottom: 5px;
+      }
+
+      &__message {
+        font-size: 11px;
+      }
     }
   }
 }
