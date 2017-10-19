@@ -3,14 +3,11 @@
 .content
   = render partial: "topbar"
   .content__chats
-    .content__chats__top
-      .content__chats__top__name ryoya
-      .content__chats__top__time 2017/10/1 01:11:11
-    .content__chats__message aaaaaaaaaaaaaaaaaaa
-    .content__chats__top
-      .content__chats__top__name taro
-      .content__chats__top__time 2017/10/1 01:11:11
-    .content__chats__message aaaaaaaaaaaaaaaaaaa
+    - @chats.each do |c|
+      .content__chats__top
+        .content__chats__top__name ryoya
+        .content__chats__top__time #{c.created_at}
+      .content__chats__message #{c.message}
 
   .content__send
     = form_for @chat, url: group_chats_path do |f|

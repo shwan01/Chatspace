@@ -3,6 +3,7 @@ class ChatsController < ApplicationController
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
     @chat = Chat.new
+    @chats = Chat.includes(:group).order("created_at DESC")
   end
 
   def new
