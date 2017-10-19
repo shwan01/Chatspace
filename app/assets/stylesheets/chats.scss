@@ -26,11 +26,11 @@
   }
 
   &__chats{
-    padding: 46px 20px 130px 40px;
+    padding: 110px 20px 130px 40px;
     background-color: $color-white;
 
     &__top{
-      padding-bottom: 10px;
+      padding: 40px 0 10px 0;
       &__name{
         color: $color-dark;
         font-weight: bold;
@@ -48,7 +48,9 @@
     &__message{
       color: $color-dark;
       font-size: 14px;
-      padding-bottom: 40px;
+    }
+
+    &__image{
     }
   }
 
