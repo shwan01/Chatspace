@@ -1,11 +1,7 @@
 = render partial: "sidebar"
 
 .content
-  .content__title
-    %p.content__title__name sample
-    %p.content__title__member ryoya
-
-
+  = render partial: "topbar"
   .content__chats
     .content__chats__top
       .content__chats__top__name ryoya
@@ -17,8 +13,10 @@
     .content__chats__message aaaaaaaaaaaaaaaaaaa
 
   .content__send
-    .content__send__input
-      %input.field{ type: "text", placeholder:"type a message" }
-    .content__send__button
-      %i.input-button.fa.fa-photo
-      %input.button{ type: "submit", value: "Send"}
+    = form_for @chat, url: group_chats_path do |f|
+      .content__send__input
+        =f.text_field :message, placeholder:"type a message", class: "content__send__input"
+      .content__send__button
+        =f.file_field :image, class: "input-button.fa.fa-photo"
+        / %i.input-button.fa.fa-photo
+        =f.submit type: "submit", value: "Send", class: "button"

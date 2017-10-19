@@ -1,0 +1,5 @@
+.content__title
+  %p.content__title__name #{@group.name}
+  %p.content__title__member
+    - @group.members.each do |m|
+      #{m.user.name}
