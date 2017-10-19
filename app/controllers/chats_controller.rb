@@ -14,7 +14,7 @@ class ChatsController < ApplicationController
     if @chat.save
       redirect_to group_chats_path, notice: 'チャットを送信しました'
     else
-      redirect_to group_chats_path, alert: 'チャット送信に失敗しました'
+      redirect_to group_chats_path, alert: 'メッセージを入力してください'
     end
   end
 
