@@ -11,7 +11,6 @@ class ChatsController < ApplicationController
 
   def create
     @chat = Chat.new(chat_params)
-    binding.pry
     if @chat.save
       redirect_to group_chats_path, notice: 'チャットを送信しました'
     else

@@ -14,9 +14,10 @@
 
   .content__send
     = form_for @chat, url: group_chats_path do |f|
-      .content__send__input
-        =f.text_field :message, placeholder:"type a message", class: "content__send__input"
-      .content__send__button
-        =f.file_field :image, class: "input-button.fa.fa-photo"
-        / %i.input-button.fa.fa-photo
+      .content__send__message
+        =f.text_field :message, placeholder:"type a message", class: "field"
+      .content__send__image
+        =f.label :image, class:"fa fa-photo" do
+          =f.file_field :image, style: "display:none"
+      .content__send__submit
         =f.submit type: "submit", value: "Send", class: "button"
