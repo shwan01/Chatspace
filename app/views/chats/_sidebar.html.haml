@@ -6,7 +6,7 @@
     = link_to new_group_path do
       %i.pencil.fa.fa-pencil-square-o
   .sidebar__grouplist
-    - @groups.each do |g|
+    - current_user.groups.each do |g|
       = link_to group_chats_path(g), class: "sidebar__grouplist__group" do
         .sidebar__grouplist__group
           .sidebar__grouplist__group__name #{g.name}

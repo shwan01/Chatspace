@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :group_find, only: [:index, :create]
+
   def index
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
@@ -14,14 +16,20 @@ class ChatsController < ApplicationController
     @chat.user_id = current_user.id
     @chat.group_id = params[:group_id]
     if @chat.save
-      redirect_to group_chats_path, notice: 'チャットを送信しました'
+      flash.now[:notice] = "チャットを送信しました"
+      render :index
     else
-      redirect_to group_chats_path, alert: 'メッセージを入力してください'
+      flash.now[:alert] = "メッセージを入力してください"
+      render :index
     end
   end
 
   private
     def chat_params
       params.require(:chat).permit(:message, :image)
+    end
+
+    def group_find
+      @group = Group.find(params[:group_id])
     end
 end

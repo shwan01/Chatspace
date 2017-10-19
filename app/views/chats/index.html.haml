@@ -14,7 +14,7 @@
           = image_tag "#{c.image}"
 
   .content__send
-    = form_for @chat, url: group_chats_path do |f|
+    = form_for @chat, url: group_chats_path, method: 'post' do |f|
       .content__send__message
         =f.text_field :message, placeholder:"type a message", class: "field"
       .content__send__image
