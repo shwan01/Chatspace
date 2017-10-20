@@ -5,6 +5,17 @@
       %i.cog.fa.fa-cog
     = link_to new_group_path do
       %i.pencil.fa.fa-pencil-square-o
-  .sidebar__group
-    - @groups.each do |g|
-      %p.sidebar__group__name #{g.name}
+  .sidebar__grouplist
+    - current_user.groups.each do |g|
+      = link_to group_chats_path(g), class: "sidebar__grouplist__group" do
+        .sidebar__grouplist__group
+          .sidebar__grouplist__group__name #{g.name}
+          .sidebar__grouplist__group__message
+            -if g.chats.present?
+              - g.chats.last(1).each do |c|
+                -if c.message.present?
+                  #{c.message}
+                -elsif c.image.present?
+                  画像が送信されました
+            -else
+              まだメッセージはありません

@@ -8,6 +8,9 @@
   &__title{
     background-color: $color-white;
     padding:0 40px 0 40px;
+    position: fixed;
+    width: 100%;
+
 
     &__name{
       font-size: 20px;
@@ -23,11 +26,11 @@
   }
 
   &__chats{
-    padding: 46px 20px 130px 40px;
+    padding: 110px 20px 130px 40px;
     background-color: $color-white;
 
     &__top{
-      padding-bottom: 10px;
+      padding: 40px 0 10px 0;
       &__name{
         color: $color-dark;
         font-weight: bold;
@@ -45,7 +48,9 @@
     &__message{
       color: $color-dark;
       font-size: 14px;
-      padding-bottom: 40px;
+    }
+
+    &__image{
     }
   }
 
@@ -55,30 +60,41 @@
       position: fixed;
       bottom: 0px;
       width: calc( 100vw - 300px );
+      height: 50px;
 
-    &__input{
+    &__message{
         padding-left: 10px;
         height:50px;
+        width: calc( 100% - 230px );
         float:left;
 
         .field{
           height:50px;
-          width: 600px;
+          width: 100%;
         }
     }
 
-    &__button{
+    &__image{
+        float: left;
+        position: relative;
+        top: 14px;
+        right: 35px;
+      .input-button{
+        font-family: FontAwesome;
+        // padding-right: 10px;
+      }
+    }
+
+    &__submit{
       float:right;
       padding-right: 80px;
-      .input-button{
-        padding-right: 10px;
-      }
       .button{
         background-color: $color-blue;
         color: $color-white;
         height: 50px;
         width: 100px;
         margin-left: 15px;
+        margin-bottom: 20px;
       }
     }
   }

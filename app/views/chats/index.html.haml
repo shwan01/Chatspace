@@ -1,24 +1,24 @@
 = render partial: "sidebar"
 
 .content
-  .content__title
-    %p.content__title__name sample
-    %p.content__title__member ryoya
-
-
+  = render partial: "topbar"
   .content__chats
-    .content__chats__top
-      .content__chats__top__name ryoya
-      .content__chats__top__time 2017/10/1 01:11:11
-    .content__chats__message aaaaaaaaaaaaaaaaaaa
-    .content__chats__top
-      .content__chats__top__name taro
-      .content__chats__top__time 2017/10/1 01:11:11
-    .content__chats__message aaaaaaaaaaaaaaaaaaa
+    - @group.chats.order("created_at DESC").each do |c|
+      .content__chats__top
+        .content__chats__top__name #{c.user.name}
+        .content__chats__top__time #{c.created_at}
+      - if c.message.present?
+        .content__chats__message #{c.message}
+      - if c.image.present?
+        .content__chats__image
+          = image_tag "#{c.image}"
 
   .content__send
-    .content__send__input
-      %input.field{ type: "text", placeholder:"type a message" }
-    .content__send__button
-      %i.input-button.fa.fa-photo
-      %input.button{ type: "submit", value: "Send"}
+    = form_for @chat, url: group_chats_path, method: 'post' do |f|
+      .content__send__message
+        =f.text_field :message, placeholder:"type a message", class: "field"
+      .content__send__image
+        =f.label :image, class:"fa fa-photo" do
+          =f.file_field :image, style: "display:none"
+      .content__send__submit
+        =f.submit "Send", class: "button"
