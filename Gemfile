@@ -41,6 +41,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
