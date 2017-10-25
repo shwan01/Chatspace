@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
   before_action :user_find, only: [:edit, :update]
+
+  def index
+    @users = User.all
+    respond_to do |format|
+      format.html { render :index  }
+      format.json
+    end
+  end
+
   def edit
   end
 
