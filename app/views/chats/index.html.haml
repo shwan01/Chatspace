@@ -3,7 +3,7 @@
 .content
   = render partial: "topbar"
   .content__chats
-    - @group.chats.order("created_at DESC").each do |c|
+    - @group.chats.order("created_at ASC").each do |c|
       .content__chats__top
         .content__chats__top__name #{c.user.name}
         .content__chats__top__time #{c.created_at}
