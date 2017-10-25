@@ -13,12 +13,15 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.group_id = params[:group_id]
-    if @chat.save
-      flash.now[:notice] = "チャットを送信しました"
+    respond_to do |format|
+      if @chat.save
+        format.html { render :index  }
+        format.json
+        flash.now[:notice] = "チャットを送信しました"
+      else
       render :index
-    else
       flash.now[:alert] = "メッセージを入力してください"
-      render :index
+      end
     end
   end
 
