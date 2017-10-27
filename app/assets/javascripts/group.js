@@ -20,7 +20,7 @@ function appendNewUser(id, name){
 }
 
   $('#search').on("keyup", function() {
-    var input = $('#group_user_ids').val();
+    var input = $('#search').val();
     console.log(input)
 
     $.ajax({
