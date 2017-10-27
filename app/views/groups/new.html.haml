@@ -18,9 +18,18 @@
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :member, "チャットメンバーを追加", class: "chat-group-form__label"
+      / .chat-group-form__field--right
+      /   = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |b|
+      /     = b.label {b.check_box + b.text}
       .chat-group-form__field--right
-        = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |b|
-          = b.label {b.check_box + b.text}
+        .chat-group-form__search.clearfix
+          = text_field_tag :search, '',placeholder: "追加したいユーザーを入力してください", class: "chat-group-form__input"
+        .js-user-seaerch-result
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--left
+        = f.label :member, "チャットメンバー", class: "chat-group-form__label"
+      .chat-group-form__field--right
+        .chat-group-users.js-add-user
     .chat-group-form__field.clearfix
       .chat-group-form__field--right
         = f.submit 'Send', class: "chat-group-form__action-btn"
