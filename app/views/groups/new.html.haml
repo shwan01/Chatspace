@@ -24,6 +24,7 @@
       .chat-group-form__field--right
         .chat-group-form__search.clearfix
           = f.text_field :user_ids, placeholder: "追加したいユーザーを入力してください", class: "chat-group-form__input"
+        .js-user-seaerch-result
     .chat-group-form__field.clearfix
       .chat-group-form__field--right
         = f.submit 'Send', class: "chat-group-form__action-btn"
