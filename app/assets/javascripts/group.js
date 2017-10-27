@@ -21,7 +21,6 @@ function appendNewUser(id, name){
 
   $('#search').on("keyup", function() {
     var input = $('#search').val();
-    console.log(input)
 
     $.ajax({
       type: 'GET',
