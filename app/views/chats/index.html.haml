@@ -4,14 +4,15 @@
   = render partial: "topbar"
   .content__chats
     - @group.chats.order("created_at ASC").each do |c|
-      .content__chats__top
-        .content__chats__top__name #{c.user.name}
-        .content__chats__top__time #{c.created_at}
-      - if c.message.present?
-        .content__chats__message #{c.message}
-      - if c.image.present?
-        .content__chats__image
-          = image_tag "#{c.image}"
+      .chat{ "data-chat-id": "#{c.id}" }
+        .content__chats__top
+          .content__chats__top__name #{c.user.name}
+          .content__chats__top__time #{c.created_at}
+        - if c.message.present?
+          .content__chats__message #{c.message}
+        - if c.image.present?
+          .content__chats__image
+            = image_tag "#{c.image}"
 
   .content__send
     = form_for @chat, url: group_chats_path, method: 'post' do |f|
