@@ -1,28 +1,22 @@
 $(function(){
   function buildHTML(chat){
-    if(chat.image.url == null){
-      var html =`<div class="chat" data-chat-id=${chat.id}>
-                <div class="content__chats__top">
-                  <div class="content__chats__top__name">${chat.user_name}</div>
-                  <div class="content__chats__top__time">${chat.created_at}</div>
-                </div>
-                <div class="content__chats__message">${chat.message}
-                 </div></div>`
-    } else {
-      var html = `<div class="chat data-chat-id=${chat.id}">
-                  <div class="content__chats__top">
-                    <div class="content__chats__top__name">${chat.user_name}</div>
-                    <div class="content__chats__top__time">${chat.created_at}</div>
-                  </div>
-                  <div class="content__chats__message">${chat.message}
-                   </div>
-                  <div class="content__chats__image">
-                    <img src="${chat.image.url}">
-                  </div></div>`
-    }
+    var Image = "";
+    if(chat.image.url){
+    Image = `<div class="content__chats__image">
+              <img src="${chat.image.url}">
+              </div>`
+    };
+    var html =`<div class="chat" data-chat-id=${chat.id}>
+              <div class="content__chats__top">
+                <div class="content__chats__top__name">${chat.user_name}</div>
+                <div class="content__chats__top__time">${chat.created_at}</div>
+              </div>
+              <div class="content__chats__message">${chat.message}
+               </div>
+               ${Image}</div>`
     return html;
   }
-  // <img src="${chat.image}">
+
   $('#new_chat').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -49,28 +43,23 @@ $(function(){
 
 $(function(){
   function loadHTML(chat){
-    if(chat.image.url == null){
-      var html =`<div class="chat" data-chat-id=${chat.id}>
-                  <div class="content__chats__top">
-                  <div class="content__chats__top__name">${chat.user_name}</div>
-                  <div class="content__chats__top__time">${chat.created_at}</div>
-                </div>
-                <div class="content__chats__message">${chat.message}
-                 </div></div>`
-    } else {
-      var html = `<div class="chat" data-chat-id=${chat.id}>
-                  <div class="content__chats__top">
-                    <div class="content__chats__top__name">${chat.user_name}</div>
-                    <div class="content__chats__top__time">${chat.created_at}</div>
-                  </div>
-                  <div class="content__chats__message">${chat.message}
-                   </div>
-                  <div class="content__chats__image">
-                    <img src="${chat.image.url}">
-                  </div></div>`
-    }
-    return html;
+    var Image = "";
+    if(chat.image.url){
+    Image = `<div class="content__chats__image">
+              <img src="${chat.image.url}">
+              </div>`
+    };
+    var html =`<div class="chat" data-chat-id=${chat.id}>
+              <div class="content__chats__top">
+                <div class="content__chats__top__name">${chat.user_name}</div>
+                <div class="content__chats__top__time">${chat.created_at}</div>
+              </div>
+              <div class="content__chats__message">${chat.message}
+               </div>
+               ${Image}</div>`
+  return html;
   }
+
   $(window).on('load', function(){
     var interval = setInterval(function(){
       if (window.location.href.match(/\/groups\/\d+\/chats/)) {
@@ -81,10 +70,7 @@ $(function(){
       dataType : 'json'
     })
     .done(function(chat) {
-      // var id = $('.chat').data('chat-id');
-      // console.log(id)
       var insertHTML = '';
-      // $.each(json, function(i, chat) {
       chat.forEach(function(c){
         if (c.id > chat_id){
           insertHTML += loadHTML(c);
