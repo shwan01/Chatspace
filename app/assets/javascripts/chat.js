@@ -1,27 +1,22 @@
 $(function(){
   function buildHTML(chat){
-    console.log(chat.image)
-    if(chat.image.url == null){
-      var html =`<div class="content__chats__top">
-                  <div class="content__chats__top__name">${chat.user_name}</div>
-                  <div class="content__chats__top__time">${chat.created_at}</div>
-                </div>
-                <div class="content__chats__message">${chat.message}
-                 </div>`
-    } else {
-      var html = `<div class="content__chats__top">
-                    <div class="content__chats__top__name">${chat.user_name}</div>
-                    <div class="content__chats__top__time">${chat.created_at}</div>
-                  </div>
-                  <div class="content__chats__message">${chat.message}
-                   </div>
-                  <div class="content__chats__image">
-                    <img src="${chat.image.url}">
-                  </div>`
-    }
+    var Image = "";
+    if(chat.image.url){
+    Image = `<div class="content__chats__image">
+              <img src="${chat.image.url}">
+              </div>`
+    };
+    var html =`<div class="chat" data-chat-id=${chat.id}>
+              <div class="content__chats__top">
+                <div class="content__chats__top__name">${chat.user_name}</div>
+                <div class="content__chats__top__time">${chat.created_at}</div>
+              </div>
+              <div class="content__chats__message">${chat.message}
+               </div>
+               ${Image}</div>`
     return html;
   }
-  // <img src="${chat.image}">
+
   $('#new_chat').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -44,4 +39,31 @@ $(function(){
     })
     $("html, body").animate({scrollTop:$(document).height()});
   })
-})
+
+  $(window).on('load', function(){
+    var interval = setInterval(function(){
+      if (window.location.href.match(/\/groups\/\d+\/chats/)) {
+    var chat_id = $('.chat:last').data('chat-id');
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      dataType : 'json'
+    })
+    .done(function(chat) {
+      var insertHTML = '';
+      chat.forEach(function(c){
+        if (c.id > chat_id){
+          insertHTML += buildHTML(c);
+        }
+      });
+      $('.content__chats').append(insertHTML);
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
+    $("html, body").animate({scrollTop:$(document).height()});
+  } else {
+    clearInterval(interval);
+   }} , 5 * 1000 );
+  });
+});

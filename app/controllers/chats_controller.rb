@@ -3,7 +3,12 @@ class ChatsController < ApplicationController
 
   def index
     @groups = current_user.groups
+    @chats = @group.chats.order("created_at ASC").includes(:user)
     @chat = Chat.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
